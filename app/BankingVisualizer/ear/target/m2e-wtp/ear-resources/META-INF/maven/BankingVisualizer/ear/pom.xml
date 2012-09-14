@@ -9,22 +9,42 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>ear</artifactId>
-  <name>ear</name>
-  <url>http://maven.apache.org</url>
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
-  <dependencies>
-
-  <dependency>
-  	<groupId>BankingVisualizer</groupId>
-  	<artifactId>ejb</artifactId>
-  </dependency>
-  <dependency>
-  	<groupId>BankingVisualizer</groupId>
-  	<artifactId>war</artifactId>
-  </dependency>
-
-  </dependencies>
-  <packaging>ear</packaging>
+	<name>ear</name>
+	<url>http://maven.apache.org</url>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>BankingVisualizer</groupId>
+			<artifactId>ejb</artifactId>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>BankingVisualizer</groupId>
+			<artifactId>war</artifactId>
+			<type>war</type>
+		</dependency>
+	</dependencies>
+	<packaging>ear</packaging>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ear-plugin</artifactId>
+				<configuration>
+					<modules>
+						<webModule>
+							<groupId>BankingVisualizer</groupId>
+							<artifactId>war</artifactId>
+						</webModule>
+						<ejbModule>
+							<groupId>BankingVisualizer</groupId>
+							<artifactId>ejb</artifactId>
+						</ejbModule>
+					</modules>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
